@@ -1,25 +1,63 @@
-# hello
+# HWord - Wordle Clone
 
-A word game. Play it [**here**](https://hellowordl.net/).
+A React-based Wordle clone with TypeScript and modern performance optimizations.
 
-## Introduction
+## Features
 
-_hello_ is a word game similar to the TV show [Lingo](<https://en.wikipedia.org/wiki/Lingo_(British_game_show)>).
+- Word guessing game similar to Wordle
+- Multiple word lengths (4-11 letters)
+- Keyboard support
+- Color-blind mode
+- Share results functionality
+- Performance optimized
+- Error boundaries for stability
+- Memory management
+- Dictionary chunking for better performance
 
-You get 6 tries to guess a 5-letter target word. After each guess, the letters light up in various colors as clues. Green means a letter is correct in this spot; yellow means a letter is _elsewhere_ in the target word; gray means a letter is not in the target word at all.
+## Tech Stack
 
-Click _About_ inside the game to learn by example.
+- React 17
+- TypeScript
+- Modern JavaScript features
+- CSS Modules
+- Error Boundaries
+- Web Vitals monitoring
 
-## Where are the words coming from?
+## Getting Started
 
-To generate target words, I have been manually curating the top 25,000 or so entries of [Peter Norvig's English word frequency list](http://norvig.com/mayzner.html) to get rid of obscure words, plurals, conjugated verbs, inappropriate language, and British spellings (sorry). If you get dealt a strange target word, please open an issue on this here GitHub repository.
+1. Clone the repository:
+```bash
+git clone https://github.com/YOUR_USERNAME/hword.git
+cd hword
+```
 
-To check guesses, I use some variation of the _Official Tournament and Club Word List_ used in North American Scrabble tournaments. (I'm not a native English speaker, but my English tends mostly American.)
+2. Install dependencies:
+```bash
+npm install
+```
 
-## For developers
+3. Start the development server:
+```bash
+npm start
+```
 
-You're very welcome to create your own offshoot/remix based on _hello_. To get started, you can [fork the code](https://docs.github.com/en/get-started/quickstart/fork-a-repo) on GitHub.
+4. Build for production:
+```bash
+npm run build
+```
 
-To run the code locally, first install [Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#using-a-node-version-manager-to-install-nodejs-and-npm). Then, in this directory, open a terminal and run `npm install` followed by `npm run start`. _hello_ will be running at http://localhost:3000/. Any changes you make to the source code will be reflected there. Have fun!
+## Performance Features
 
-Finally, `npm run deploy` will deploy your code to the `gh-pages` branch of your fork, so that everyone can play your version at https://yourname.github.io/hello (or the name of your fork if you renamed it). 
+- Dictionary code splitting
+- React Hook optimizations
+- Memory management
+- Error handling
+- Performance monitoring
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
+## License
+
+MIT License
