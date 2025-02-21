@@ -27,7 +27,7 @@ A React-based Wordle clone with TypeScript and modern performance optimizations.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/hword.git
+git clone https://github.com/joe0011/hword.git
 cd hword
 ```
 
