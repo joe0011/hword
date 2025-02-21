@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Row, RowState } from "./Row";
 import dictionary from "./dictionary.json";
 import { Clue, clue, describeClue, violation } from "./clue";
 import { Keyboard } from "./Keyboard";
 import targetList from "./targets.json";
+import { validateWord } from './utils/wordValidator';
 import {
   describeSeed,
   dictionarySet,
@@ -156,7 +157,7 @@ function Game(props: GameProps) {
     setHint(url);
   }
 
-  const onKey = (key: string) => {
+  const handleKey = useCallback(async (key: string) => {
     if (gameState !== GameState.Playing) {
       if (key === "Enter") {
         startNextGame();
@@ -178,7 +179,7 @@ function Game(props: GameProps) {
         setHint("Too short");
         return;
       }
-      if (!dictionary.includes(currentGuess)) {
+      if (!validateWord(currentGuess)) {
         setHint("Not a valid word");
         return;
       }
@@ -209,12 +210,12 @@ function Game(props: GameProps) {
         speak(describeClue(clue(currentGuess, target)));
       }
     }
-  };
+  }, [gameState, guesses.length, props.maxGuesses, wordLength]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (!e.ctrlKey && !e.metaKey) {
-        onKey(e.key);
+        handleKey(e.key);
       }
       if (e.key === "Backspace") {
         e.preventDefault();
@@ -224,7 +225,7 @@ function Game(props: GameProps) {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [currentGuess, gameState]);
+  }, [handleKey]);
 
   let letterInfo = new Map<string, Clue>();
   const tableRows = Array(props.maxGuesses)
@@ -318,7 +319,7 @@ function Game(props: GameProps) {
       <Keyboard
         layout={props.keyboardLayout}
         letterInfo={letterInfo}
-        onKey={onKey}
+        onKey={handleKey}
       />
       <div className="Game-seed-info">
         {challenge
